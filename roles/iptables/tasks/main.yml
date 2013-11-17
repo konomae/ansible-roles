@@ -1,0 +1,13 @@
+---
+- name: validate iptables_accept_ports contains only numbers
+  fail: msg="if iptables_accept_ports are not numbers"
+  when: "item is not number"
+  with_items: $iptables_accept_ports
+
+- yum: name=iptables state=present
+- name: copy iptables config
+  template: src=iptables dest=/etc/sysconfig/iptables owner=root group=root mode=600 backup=yes
+  notify:
+    - restart iptables
+- name: ensure iptables is running
+  service: name=iptables state=started enabled=yes

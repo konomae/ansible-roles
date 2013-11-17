@@ -1,0 +1,3 @@
+{% if user_name is defined %}
+{{ user_name }} ALL=(ALL) ALL
+{% endif %}

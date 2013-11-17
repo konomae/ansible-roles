@@ -1,0 +1,37 @@
+---
+- name: install dependencies
+  yum: name=$item state=present
+  with_items:
+    # yum grouplist -v
+    - "@development"
+    - zlib-devel
+    - bzip2-devel
+    - openssl-devel
+    - ncurses-devel
+    - sqlite-devel
+    - readline-devel
+    - tk-devel
+
+- name: clone pyenv repo
+  git: repo=git://github.com/yyuu/pyenv.git dest=~/.pyenv
+  sudo: no
+
+- name: add pyenv-virtualenv plugin
+  git: repo=git://github.com/yyuu/pyenv-virtualenv.git dest=~/.pyenv/plugins/pyenv-virtualenv
+  sudo: no
+
+- name: 'export PATH="$HOME/.pyenv/bin:$PATH"'
+  lineinfile: >
+    dest=~/.bash_profile
+    insertafter=EOF
+    regexp='^export PATH="\\$HOME/\.pyenv/bin:\\$PATH'
+    line='export PATH="$HOME/.pyenv/bin:$PATH"'
+  sudo: no
+
+- name: 'eval "$(pyenv init -)"'
+  lineinfile: >
+    dest=~/.bash_profile
+    insertafter=EOF
+    regexp='^eval "\\$\(pyenv init -\)"'
+    line='eval "$(pyenv init -)"'
+  sudo: no

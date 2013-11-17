@@ -1,0 +1,27 @@
+---
+- name: install php
+  yum: name=$item state=present
+  with_items:
+    - php
+    - php-pear
+    - php-pdo
+    - php-mysql
+    - php-xml
+    - php-mbstring
+    - php-gd
+    - php-intl
+    - php-pecl-apc
+    - pcre
+  notify:
+    - restart httpd
+
+- name: install php packages from epel
+  yum: name=$item state=present enablerepo=epel
+  with_items:
+    - php-mcrypt
+    - php-phpunit-PHPUnit
+  notify:
+    - restart httpd
+
+- name: install composer
+  shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer

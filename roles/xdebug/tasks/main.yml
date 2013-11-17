@@ -1,0 +1,7 @@
+---
+
+- yum: name=php-pecl-xdebug state=present
+
+- template: >
+    src=xdebug.ini dest=/etc/php.d/xdebug.ini backup=yes
+    owner=root group=root mode=644

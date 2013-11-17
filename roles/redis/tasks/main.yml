@@ -1,0 +1,15 @@
+---
+
+# Install Redis
+- yum: name=redis state=present
+- name: ensure redis is running
+  service: name=redis state=started enabled=yes
+- template: src=redis.conf dest=/etc/redis.conf owner=root group=root mode=0644 backup=yes
+  notify:
+    - restart redis
+
+# Install php-redis
+- yum: name=php-redis state=present
+- template: src=php.d/redis.ini dest=/etc/php.d/redis.ini owner=root group=root mode=0644 backup=yes
+  notify:
+    - restart httpd

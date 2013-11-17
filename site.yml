@@ -1,0 +1,21 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    _sshd_port: 22
+    _mysql_root_password: "root"
+  roles:
+    - common
+    - ntpd
+    - httpd
+    - php
+    - {role: mysqld, mysql_root_password: $_mysql_root_password}
+    - {role: sshd, sshd_port: $_sshd_port}
+    - {role: iptables, iptables_accept_ports: [$_sshd_port, 80, 443]}
+  tasks:
+    - yum: name=* state=latest
+
+- hosts: local
+  sudo: yes
+  roles:
+    - xdebug

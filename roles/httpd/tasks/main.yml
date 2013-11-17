@@ -1,0 +1,20 @@
+---
+- yum: name=httpd state=present
+- yum: name=mod_ssl state=present
+
+- name: remove welcome.conf
+  file: dest=/etc/httpd/conf.d/welcome.conf state=absent
+  notify:
+    - restart httpd
+
+- name: copy httpd conf
+  template: src=$item dest=/etc/httpd/conf.d/$item owner=root group=root mode=644 backup=no
+  with_items:
+    - 00-vagrant.conf
+    - deflate.conf
+    - ssl.conf
+  notify:
+    - restart httpd
+
+- name: ensure httpd is running
+  service: name=httpd state=started enabled=yes

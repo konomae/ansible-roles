@@ -1,0 +1,9 @@
+---
+# $ python -c 'import crypt; print crypt.crypt("mypassword", "$1$mysalt$")'
+# $ grub-crypt --sha-512
+
+yum:
+  epel_url: http://ftp.riken.jp/Linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
+  #epel_url: http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+  remi_url: http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+  include_only: .jp
