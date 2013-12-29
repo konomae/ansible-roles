@@ -1,0 +1,13 @@
+---
+- yum: name=zsh state=present
+- name: git clone ohmyzsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh update=no
+  sudo: no
+- name: copy ohmyzsh default if .zshrc does not exist
+  shell: cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc creates=~/.zshrc
+  sudo: no
+
+- name: chsh
+  shell: chsh -s /bin/zsh {{ ansible_ssh_user }}
+  register: result
+  changed_when: "'Shell changed.' in result.stdout"

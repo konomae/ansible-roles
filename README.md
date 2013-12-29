@@ -28,6 +28,7 @@ ansible-playbook -i local site.yml -v -D
 - iptables
 - mysqld
 - ntpd
+- ohmyzsh
 - php
 - pyenv
 - redis
