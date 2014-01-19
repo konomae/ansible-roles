@@ -33,3 +33,4 @@
   sudo: yes
   roles:
     - xdebug
+    - ohmyzsh
