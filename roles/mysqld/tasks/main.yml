@@ -17,7 +17,7 @@
   service: name=mysqld state=started enabled=yes
 
 # set root password
-- mysql_user: name=root host=localhost password=$mysql_root_password
+- mysql_user: name=root host=localhost password={{ mysql_root_password }}
 - template: src=my_credentials.cnf dest=/root/.my.cnf owner=root mode=600
 
 - name: create default db

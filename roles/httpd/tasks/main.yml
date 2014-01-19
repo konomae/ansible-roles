@@ -8,7 +8,7 @@
     - restart httpd
 
 - name: copy httpd conf
-  template: src=$item dest=/etc/httpd/conf.d/$item owner=root group=root mode=644 backup=no
+  template: src={{ item }} dest=/etc/httpd/conf.d/{{ item }} owner=root group=root mode=644 backup=no
   with_items:
     - 00-vagrant.conf
     - deflate.conf

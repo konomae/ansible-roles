@@ -2,12 +2,12 @@
 
 # Add Yum Repos
 - name: add epel rpm
-  yum: name=${yum.epel_url} state=present
+  yum: name={{ yum.epel_url }} state=present
 - name: add remi rpm
-  yum: name=${yum.remi_url} state=present
+  yum: name={{ yum.remi_url }} state=present
 
-#- command: rpm -Uvh --force ${yum.remi_url} creates=/etc/yum.repos.d/remi.repo
-#- command: rpm -Uvh --force ${yum.epel_url} creates=/etc/yum.repos.d/epel.repo
+#- command: rpm -Uvh --force {{ yum.remi_url } creates=/etc/yum.repos.d/remi.repo
+#- command: rpm -Uvh --force {{ yum.epel_url }} creates=/etc/yum.repos.d/epel.repo
 
 - name: fastestmirror.conf
   template: src=fastestmirror.conf dest=/etc/yum/pluginconf.d/fastestmirror.conf owner=root group=root mode=0644
@@ -16,7 +16,7 @@
 #  yum: name=* state=latest
 
 - name: install generic packages
-  yum: name=$item state=present
+  yum: name={{ item }} state=present
   with_items:
     - git
     - vim-enhanced

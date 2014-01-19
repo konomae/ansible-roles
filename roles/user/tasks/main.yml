@@ -6,10 +6,10 @@
 - fail: msg="if user_password is not defined"
   when: "user_password is not defined"
 
-- user: name=$user_name password=$user_password
+- user: name={{ user_name }} password={{ user_password }}
 - name: insert id_rsa.pub to authorized_keys
-  authorized_key: user=$user_name key="$item"
+  authorized_key: user={{ user_name }} key="{{ item }}"
   with_file:
     - ~/.ssh/id_rsa.pub
-- template: src=sudoers.d/user dest=/etc/sudoers.d/$user_name owner=root group=root mode=440
+- template: src=sudoers.d/user dest=/etc/sudoers.d/{{ user_name }} owner=root group=root mode=440
   when: "user_can_sudo"

@@ -1,6 +1,6 @@
 ---
 - name: install php
-  yum: name=$item state=present
+  yum: name={{ item }} state=present
   with_items:
     - php
     - php-pear
@@ -16,7 +16,7 @@
     - restart httpd
 
 - name: install php packages from epel
-  yum: name=$item state=present enablerepo=epel
+  yum: name={{ item }} state=present enablerepo=epel
   with_items:
     - php-mcrypt
     - php-phpunit-PHPUnit

@@ -6,21 +6,21 @@
   file: dest=/usr/local/ssl/private state=directory
 
 - name: copy ssl certificate
-  copy: src=$vhost_ssl_cert dest=/usr/local/ssl/private/$vhost_host_name.cer owner=root group=root mode=644
+  copy: src={{ vhost_ssl_cert }} dest=/usr/local/ssl/private/{{ vhost_host_name }}.cer owner=root group=root mode=644
   when: "vhost_ssl_cert is defined"
 
 - name: copy ssl private key
-  copy: src=$vhost_ssl_key dest=/usr/local/ssl/private/$vhost_host_name.key owner=root group=root mode=644
+  copy: src={{ vhost_ssl_key }} dest=/usr/local/ssl/private/{{ vhost_host_name }}.key owner=root group=root mode=644
   when: "vhost_ssl_key is defined"
 
 - name: copy ssl intermediate certificate
-  copy: src=$vhost_ssl_ca_cert dest=/usr/local/ssl/private/$vhost_host_name.cacert.cer owner=root group=root mode=644
+  copy: src={{ vhost_ssl_ca_cert }} dest=/usr/local/ssl/private/{{ vhost_host_name }}.cacert.cer owner=root group=root mode=644
   when: "vhost_ssl_ca_cert is defined"
 
 - name: create virtual host documents directory
-  file: dest=/var/www/html/$vhost_host_name state=directory
+  file: dest=/var/www/html/{{ vhost_host_name }} state=directory
 
 - name: create virtual host httpd conf
-  template: src=vhost.conf dest=/etc/httpd/conf.d/$vhost_host_name.conf owner=root group=root mode=644
+  template: src=vhost.conf dest=/etc/httpd/conf.d/{{ vhost_host_name }}.conf owner=root group=root mode=644
   notify:
     - restart httpd
