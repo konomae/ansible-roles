@@ -1,5 +1,10 @@
 ---
 
+# Ansible needs libselinux-python
+- name: install libselinux-python
+  yum: name=libselinux-python state=present
+#- selinux: state=disabled
+
 # Add Yum Repos
 - name: add epel rpm
   yum: name={{ yum.epel_url }} state=present
