@@ -1,0 +1,9 @@
+---
+
+# Install logstash
+- rpm_key: state=present key=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+- template: src=logstash.repo dest=/etc/yum.repos.d/logstash.repo owner=root group=root mode=0644 backup=yes
+
+- yum: name=logstash state=present
+- name: ensure logstash is running
+  service: name=logstash state=started enabled=yes
