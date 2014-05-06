@@ -1,0 +1,12 @@
+---
+
+# Install td-agent
+- rpm_key: state=present key=http://packages.treasure-data.com/redhat/RPM-GPG-KEY-td-agent
+- name: add treasuredata repository
+  template: src=td.repo dest=/etc/yum.repos.d/td.repo owner=root group=root mode=0644 backup=yes
+- yum: name=td-agent state=present enablerepo=treasuredata
+- file: path=/etc/td-agent/conf.d state=directory owner=root group=root mode=0755
+- template: src=td-agent.conf dest=/etc/td-agent/td-agent.conf owner=root group=root mode=0644 backup=yes
+  notify: restart td-agent
+- name: ensure td-agent is running
+  service: name=td-agent state=started enabled=yes
