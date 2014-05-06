@@ -1,0 +1,6 @@
+---
+
+- yum: name=libcurl-devel state=present
+- yum: name=ruby-devel state=present
+- yum: name=@development state=present
+- gem: name=fluent-plugin-elasticsearch state=present user_install=no executable=/usr/lib64/fluent/ruby/bin/fluent-gem
