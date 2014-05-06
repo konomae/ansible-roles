@@ -24,8 +24,10 @@ ansible-playbook -i local site.yml -v -D
 ## Roles
 
 - common
+- elasticsearch
 - httpd
 - iptables
+- logstash
 - mysqld
 - ntpd
 - ohmyzsh
@@ -33,6 +35,7 @@ ansible-playbook -i local site.yml -v -D
 - pyenv
 - redis
 - sshd
+- td-agent
 - user
 - vhost
 - xdebug
