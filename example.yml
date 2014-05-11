@@ -10,11 +10,11 @@
   #  - {name: "_user_password", private: yes, encrypt: "md5_crypt", confirm: yes, salt: "5PWdYKj0"}
   roles:
     - common
-    - {role: user, user_name: "ansible", user_password: $_user_password}
+    - {role: user, user_name: "ansible", user_password: "{{ _user_password }}"}
     - ntpd
     - httpd
     - php
-    - {role: mysqld, mysql_root_password: $_mysql_root_password}
+    - {role: mysqld, mysql_root_password: "{{ _mysql_root_password }}"}
     - role: vhost
       vhost_host_name: localhost
     - role: vhost
@@ -22,9 +22,9 @@
       vhost_ssl_cert: "files/ssl/example.com/example.com.20130101.crt"
       vhost_ssl_key: "files/ssl/example.com/example.com.20130101.key"
       vhost_ssl_ca_cert: "files/ssl/example.com/cacert.cer"
-    - {role: sshd, sshd_port: $_sshd_port}
+    - {role: sshd, sshd_port: "{{ _sshd_port }}"}
     - redis
-    - {role: iptables, iptables_accept_ports: [$_sshd_port, 80, 443]}
+    - {role: iptables, iptables_accept_ports: ["{{ _sshd_port }}", 80, 443]}
     - pyenv
   tasks:
     #- yum: name=* state=latest

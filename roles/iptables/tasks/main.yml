@@ -1,8 +1,7 @@
 ---
 - name: validate iptables_accept_ports contains only numbers
-  fail: msg="if iptables_accept_ports are not numbers"
-  when: "item is not number"
-  with_items: $iptables_accept_ports
+  assert: that="item|int > 0"
+  with_items: iptables_accept_ports
 
 - yum: name=iptables state=present
 - name: copy iptables config

@@ -1,6 +1,5 @@
 ---
-- fail: msg="if sshd_port is not a number"
-  when: sshd_port is not number
+- assert: {that: "sshd_port|int > 0"}
 - template: src=sshd_config dest=/etc/ssh/sshd_config owner=root group=root mode=600
   notify:
     - restart sshd
