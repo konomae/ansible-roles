@@ -1,2 +1,3 @@
 ---
 user_can_sudo: yes
+user_can_sudo_nopassword: no
