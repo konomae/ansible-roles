@@ -1,3 +1,5 @@
 ---
 user_can_sudo: yes
 user_can_sudo_nopassword: no
+user_auth_keys:
+  - ~/.ssh/id_rsa.pub
