@@ -20,3 +20,5 @@ AcceptEnv XMODIFIERS
 X11Forwarding yes
 
 Subsystem	sftp	/usr/libexec/openssh/sftp-server
+
+UseDNS no
