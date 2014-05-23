@@ -8,7 +8,7 @@ PasswordAuthentication yes
 ChallengeResponseAuthentication no
 PermitEmptyPasswords no
 
-GSSAPIAuthentication yes
+GSSAPIAuthentication no
 GSSAPICleanupCredentials yes
 
 UsePAM yes
