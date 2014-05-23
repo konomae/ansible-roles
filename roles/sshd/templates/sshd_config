@@ -6,6 +6,7 @@ PermitRootLogin {% if sshd_root_login %}yes{% else %}no{% endif %}
 
 PasswordAuthentication yes
 ChallengeResponseAuthentication no
+PermitEmptyPasswords no
 
 GSSAPIAuthentication yes
 GSSAPICleanupCredentials yes
