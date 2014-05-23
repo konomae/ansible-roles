@@ -4,14 +4,15 @@ SyslogFacility AUTHPRIV
 
 PermitRootLogin {% if sshd_root_login %}yes{% else %}no{% endif %}
 
-PasswordAuthentication yes
+PasswordAuthentication {% if sshd_password_auth %}yes{% else %}no{% endif %}
+
 ChallengeResponseAuthentication no
 PermitEmptyPasswords no
 
 GSSAPIAuthentication no
 GSSAPICleanupCredentials yes
 
-UsePAM yes
+UsePAM {% if sshd_use_pam %}yes{% else %}no{% endif %}
 
 AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
 AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT

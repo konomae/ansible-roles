@@ -1,3 +1,6 @@
 ---
 sshd_port: 22
 sshd_root_login: no
+sshd_password_auth: yes
+sshd_use_pam: yes
+
