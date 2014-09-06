@@ -4,9 +4,11 @@
   when: "mysql_root_password is not defined"
 
 # Install MySQL Server
-- yum: name=mysql-server state=present
-- yum: name=phpMyAdmin state=present
-- yum: name=MySQL-python state=present
+- yum: name={{ item }} state=present
+  with_items:
+    - mysql-server
+    - phpMyAdmin
+    - MySQL-python
 
 - name: copy mysql config
   template: src=my.cnf dest=/etc/my.cnf owner=root group=root mode=644 backup=yes
