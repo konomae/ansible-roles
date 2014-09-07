@@ -1,6 +1,8 @@
 ---
-- yum: name=httpd state=present
-- yum: name=mod_ssl state=present
+- yum: name={{ item }} state=present
+  with_items:
+    - httpd
+    - mod_ssl
 
 - name: remove welcome.conf
   file: dest=/etc/httpd/conf.d/welcome.conf state=absent
