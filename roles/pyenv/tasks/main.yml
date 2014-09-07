@@ -13,11 +13,11 @@
     - tk-devel
 
 - name: clone pyenv repo
-  git: repo=git://github.com/yyuu/pyenv.git dest=~/.pyenv
+  git: repo=https://github.com/yyuu/pyenv.git dest=~/.pyenv
   sudo: no
 
 - name: add pyenv-virtualenv plugin
-  git: repo=git://github.com/yyuu/pyenv-virtualenv.git dest=~/.pyenv/plugins/pyenv-virtualenv
+  git: repo=https://github.com/yyuu/pyenv-virtualenv.git dest=~/.pyenv/plugins/pyenv-virtualenv
   sudo: no
 
 - name: 'export PATH="$HOME/.pyenv/bin:$PATH"'
