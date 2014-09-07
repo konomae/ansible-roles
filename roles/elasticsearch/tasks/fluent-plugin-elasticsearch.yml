@@ -4,6 +4,6 @@
   with_items:
     - libcurl-devel
     - ruby-devel
-    - @development
+    - "@development"
 
 - gem: name=fluent-plugin-elasticsearch state=present user_install=no executable=/usr/lib64/fluent/ruby/bin/fluent-gem
