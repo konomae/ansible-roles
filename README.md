@@ -4,7 +4,8 @@
 
 - Mac OS X (Host OS)
 - Python 2.7
-- CentOS 6.4 (Guest OS)
+- CentOS 6.5 (Guest OS)
+- Ansible 1.7.1
 
 
 ## Install Dependencies
