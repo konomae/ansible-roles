@@ -24,7 +24,7 @@
   lineinfile: >
     dest=~/.bash_profile
     insertafter=EOF
-    regexp='^export PATH="\\$HOME/\.pyenv/bin:\\$PATH'
+    regexp='^export PATH="\$HOME/\.pyenv/bin:\$PATH'
     line='export PATH="$HOME/.pyenv/bin:$PATH"'
   sudo: no
 
@@ -32,6 +32,6 @@
   lineinfile: >
     dest=~/.bash_profile
     insertafter=EOF
-    regexp='^eval "\\$\(pyenv init -\)"'
+    regexp='^eval "\$\(pyenv init -\)"'
     line='eval "$(pyenv init -)"'
   sudo: no
