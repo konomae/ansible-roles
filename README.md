@@ -40,3 +40,9 @@ ansible-playbook -i local site.yml -v -D
 - user
 - vhost
 - xdebug
+
+
+## License
+
+The MIT License
+
