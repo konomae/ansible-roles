@@ -26,6 +26,9 @@
     - redis
     - {role: iptables, iptables_accept_ports: ["{{ _sshd_port }}", 80, 443]}
     - pyenv
+    - td-agent
+    - logstash
+    - elasticsearch
   tasks:
     #- yum: name=* state=latest
 
