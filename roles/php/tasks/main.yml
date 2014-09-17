@@ -25,3 +25,6 @@
 
 - name: install composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+
+- name: register composer self-update job
+  cron: name="composer self-update" user=root hour="0" minute="0" job="/usr/local/bin/composer self-update  >> /tmp/composer-self-update.log 2>&1"
