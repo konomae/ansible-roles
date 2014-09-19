@@ -1,0 +1,2 @@
+---
+vhost_ssl_cert_dir: "/usr/local/ssl/private"
