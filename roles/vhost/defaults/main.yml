@@ -1,7 +1,7 @@
 ---
-# Apache Examples
-# SSLCertificateKeyFile   /etc/pki/tls/private/localhost.key
-# SSLCertificateFile      /etc/pki/tls/certs/localhost.crt
-# SSLCACertificateFile    /etc/pki/tls/certs/ca-bundle.crt
+# Apache Examples (=> and file permissions)
+# SSLCertificateKeyFile   /etc/pki/tls/private/localhost.key => (0600)
+# SSLCertificateFile      /etc/pki/tls/certs/localhost.crt   => (0600)
+# SSLCACertificateFile    /etc/pki/tls/certs/ca-bundle.crt   => (0644)
 
 vhost_ssl_cert_dir: "/usr/local/ssl/private"
