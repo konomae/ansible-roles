@@ -10,7 +10,7 @@
   when: "vhost_ssl_cert is defined"
 
 - name: copy ssl private key
-  copy: src={{ vhost_ssl_key }} dest={{ vhost_ssl_cert_dir }}/{{ vhost_host_name }}.key owner=root group=root mode=644
+  copy: src={{ vhost_ssl_key }} dest={{ vhost_ssl_cert_dir }}/{{ vhost_host_name }}.key owner=root group=root mode=600
   when: "vhost_ssl_key is defined"
 
 - name: copy ssl intermediate certificate
