@@ -23,4 +23,4 @@
 - template: src=my_credentials.cnf dest=/root/.my.cnf owner=root mode=600
 
 - name: create default db
-  mysql_db: name=dev collation=utf8_unicode_ci encoding=utf8
+  mysql_db: name={{ mysqld_default_db_name }} collation=utf8_unicode_ci encoding=utf8
